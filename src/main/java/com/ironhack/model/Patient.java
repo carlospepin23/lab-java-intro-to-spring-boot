@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -12,15 +14,15 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patient_id;
     private String name;
-    private String date_of_birth;
+    private LocalDate dateOfBirth;
 
     @ManyToOne
     @JoinColumn(name = "admitted_by", referencedColumnName = "employee_id")
     private Employee admittedBy;
 
-    public Patient(String name, String date_of_birth, Employee admittedBy) {
+    public Patient(String name, LocalDate date_of_birth, Employee admittedBy) {
         this.name = name;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = date_of_birth;
         this.admittedBy = admittedBy;
     }
 

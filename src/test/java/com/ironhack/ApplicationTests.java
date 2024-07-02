@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -32,11 +34,12 @@ class ApplicationTests {
 		employeeRepository.save(new Employee(172456,"psychiatric", "John Paul Armes", Employee.Status.OFF.toString()));
 
 		//Patients
-		patientRepository.save(new Patient("Jaime Jordan", "1984-03-02", employeeRepository.findById(564134).get()));
-		patientRepository.save(new Patient("Marian Garcia", "1972-01-12", employeeRepository.findById(564134).get()));
-		patientRepository.save(new Patient("Julia Dusterdieck", "1954-06-11", employeeRepository.findById(356712).get()));
-		patientRepository.save(new Patient("Steve McDuck", "1931-11-10", employeeRepository.findById(761527).get()));
-		patientRepository.save(new Patient("Marian Garcia", "1999-02-15", employeeRepository.findById(172456).get()));
+
+		patientRepository.save(new Patient("Jaime Jordan", LocalDate.parse("1984-03-02"), employeeRepository.findById(564134).get()));
+		patientRepository.save(new Patient("Marian Garcia", LocalDate.parse("1972-01-12"), employeeRepository.findById(564134).get()));
+		patientRepository.save(new Patient("Julia Dusterdieck", LocalDate.parse("1954-06-11"), employeeRepository.findById(356712).get()));
+		patientRepository.save(new Patient("Steve McDuck", LocalDate.parse("1931-11-10"), employeeRepository.findById(761527).get()));
+		patientRepository.save(new Patient("Marian Garcia", LocalDate.parse("1999-02-15"), employeeRepository.findById(172456).get()));
 	}
 
 //	@AfterEach

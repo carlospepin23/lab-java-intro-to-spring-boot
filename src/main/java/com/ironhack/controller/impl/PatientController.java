@@ -30,20 +30,18 @@ public class PatientController implements IPatientController {
     }
 
     @GetMapping("/patients/date_of_birth/{start_date}/{end_date}")
-    public List<Patient> getAllPatientsByDateOfBirthRange( @PathVariable String start_date, @PathVariable String end_date) {
-        LocalDate startDate = LocalDate.parse(start_date);
-        LocalDate endDate = LocalDate.parse(end_date);
-        return patientRepository.findAllByDateOfBirthBetween(startDate, endDate);
+    public List<Patient> getAllPatientsByDateOfBirthRange( @PathVariable LocalDate start_date, @PathVariable LocalDate end_date) {
+        return patientRepository.findAllByDateOfBirthBetween(start_date, end_date);
     }
 
     @GetMapping("/patients/admitting_doctor/department/{department}")
     public List<Patient> getAllPatientsByAdmittingDoctorDepartment(@PathVariable String department){
-        return patientRepository.findAllByAdmittingDoctor_Department(department);
+        return patientRepository.findAllByAdmittedBy_Department(department);
     }
 
     @GetMapping("/patients/admitting_doctor/status/off")
     public List<Patient> getAllPatientsByAdmittingDoctorStatusOff(){
-        return patientRepository.findAllByAdmittingDoctor_Status("OFF");
+        return patientRepository.findAllByAdmittedBy_Status("OFF");
     }
 }
 

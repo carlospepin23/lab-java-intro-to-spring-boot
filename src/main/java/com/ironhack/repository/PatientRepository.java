@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
     List<Patient> findAllByDateOfBirthBetween(LocalDate startDate, LocalDate endDate);
-    List<Patient> findAllByAdmittingDoctor_Department(String department);
-    List<Patient> findAllByAdmittingDoctor_Status(String off);
+    List<Patient> findAllByAdmittedBy_Department(String department);
+    List<Patient> findAllByAdmittedBy_Status(String off);
 }
